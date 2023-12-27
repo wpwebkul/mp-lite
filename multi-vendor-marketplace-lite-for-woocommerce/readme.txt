@@ -3,9 +3,9 @@ Contributors: webkul
 Tags: b2c marketplace, marketplace, marketplace for WooCommerce, marketplace plugin, multi-vendor marketplace, seller, sellers, vendor, vendors, WooCommerce marketplace
 Requires at least: 5.0
 Tested up to: 6.4
-Stable tag: 1.0.0
+Stable tag: 0.9.2
 Requires PHP: 7.4
-Tested up to PHP: 8.2
+Tested up to PHP: 8.3
 WC requires at least: 5.0
 WC tested up to: 8.4
 License: GPLv3
@@ -33,6 +33,15 @@ For Customer Workflow
 
 [youtube https://www.youtube.com/watch?v=lr7_2FfFg3U]
 
+= Privacy notices =
+
+To show top billing countries and charts on the seller's Dashboard this plugin uses Google Map Services. Thus, confirming the provider's privacy policy is recommended.
+
+* Google Map and Charts ([Google](https://policies.google.com/?hl=en))
+
+For showing extensions and the support and services menu we are using our Webkul Services. So, confirming the privacy policies is recommended.
+
+* Extensions ([Webkul Policy(https://webkul.com/privacy-policy/)]
 
 Let's checkout all features of Multi-Vendor Marketplace Lite for WooCommerce.
 
