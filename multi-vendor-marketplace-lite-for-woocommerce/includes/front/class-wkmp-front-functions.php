@@ -326,9 +326,9 @@ if ( ! class_exists( 'WKMP_Front_Functions' ) ) {
 				if ( 'remove' !== $shopurl_visibility ) {
 					if ( empty( $shop_url ) && 'required' === $shopurl_visibility ) {
 						return new \WP_Error( 'shopurl-error', esc_html__( 'Please enter valid shop URL.', 'wk-marketplace' ) );
-					} elseif ( preg_match( '/[\'^£$%&*()}{@#~?><>,|=_+¬]/', $shop_url ) ) {
+					} elseif ( ! empty( $shop_url ) && preg_match( '/[\'^£$%&*()}{@#~?><>,|=_+¬]/', $shop_url ) ) {
 						return new \WP_Error( 'shopurl-error', esc_html__( 'You can not use special characters in shop url except HYPHEN(-).', 'wk-marketplace' ) );
-					} elseif ( ctype_space( $shop_url ) ) {
+					} elseif ( ! empty( $shop_url ) && ctype_space( $shop_url ) ) {
 						return new \WP_Error( 'shopurl-error', esc_html__( 'White space(s) aren\'t allowed in shop url.', 'wk-marketplace' ) );
 					} elseif ( $user ) {
 						return new \WP_Error( 'shopurl-error', esc_html__( 'This shop URl already EXISTS, please try different shop url.', 'wk-marketplace' ) );

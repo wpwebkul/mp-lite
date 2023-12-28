@@ -49,7 +49,7 @@ if ( ! is_account_page() ) {
 			?>
 			<p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
 				<label for="wkmp-shopname"><?php esc_html_e( 'Shop Name', 'wk-marketplace' ); ?><?php echo ( 'required' === $shopname_visibility ) ? '<span class="required">*</span>' : ''; ?></label>
-				<input type="text" class="input-text form-control" name="wkmp_shopname" value="<?php echo esc_attr( $wkmp_shopname ); ?>" id="wkmp-shopname"/>
+				<input data-is_optional="<?php echo ( 'required' !== $shopname_visibility ) ? true : false; ?>" type="text" class="input-text form-control" name="wkmp_shopname" value="<?php echo esc_attr( $wkmp_shopname ); ?>" id="wkmp-shopname"/>
 			</p>
 			<?php
 		}
@@ -60,7 +60,7 @@ if ( ! is_account_page() ) {
 			?>
 			<p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
 				<label for="wkmp-shopurl" class="pull-left"><?php esc_html_e( 'Shop URL', 'wk-marketplace' ); ?> <?php echo ( 'required' === $shopurl_visibility ) ? '<span class="required">*</span>' : ''; ?></label>
-				<input type="text" class="input-text form-control" name="wkmp_shopurl" value="<?php echo esc_attr( $wkmp_shopurl ); ?>" id="wkmp-shopurl"/>
+				<input data-is_optional="<?php echo ( 'required' !== $shopurl_visibility ) ? true : false; ?>" type="text" class="input-text form-control" name="wkmp_shopurl" value="<?php echo esc_attr( $wkmp_shopurl ); ?>" id="wkmp-shopurl"/>
 				<strong id="wkmp-shop-url-availability"></strong>
 			</p>
 			<?php

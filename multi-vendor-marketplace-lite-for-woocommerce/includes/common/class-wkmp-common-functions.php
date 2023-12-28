@@ -602,19 +602,18 @@ if ( ! class_exists( 'WKMP_Common_Functions' ) ) {
 		/**
 		 * Function to restrict media.
 		 *
-		 * @param object $wp_query_obj Query object.
+		 * @hooked 'ajax_query_attachments_args' filter hook.
+		 *
+		 * @param object $query Query object.
 		 */
-		public static function wkmp_restrict_media_library( $wp_query_obj ) {
-			global $current_user, $pagenow;
+		public static function wkmp_restrict_media_library( $query ) {
+			global $current_user;
 
 			if ( is_a( $current_user, 'WP_User' ) && current_user_can( 'wk_marketplace_seller' ) ) {
-
-				$media_action = \WK_Caching::wk_get_request_data( 'action' );
-
-				if ( 'upload.php' === $pagenow || 'query-attachments' === $media_action ) {
-					$wp_query_obj->set( 'author', $current_user->ID );
-				}
+				$query['author'] = $current_user->ID;
 			}
+
+			return $query;
 		}
 
 		/**
