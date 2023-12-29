@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2023-12-28T15:39:04+00:00\n"
+"POT-Creation-Date: 2023-12-29T14:47:49+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.6.0\n"
 "X-Domain: wk-marketplace\n"
@@ -195,7 +195,7 @@ msgstr ""
 #: includes/admin/class-wkmp-admin-functions.php:266
 #: includes/admin/class-wkmp-admin-functions.php:292
 #: includes/admin/class-wkmp-admin-functions.php:304
-#: includes/front/class-wkmp-front-functions.php:491
+#: includes/front/class-wkmp-front-functions.php:502
 #: templates/front/class-wkmp-front-template-functions.php:213
 msgid "Marketplace"
 msgstr ""
@@ -207,7 +207,7 @@ msgstr ""
 
 #: includes/admin/class-wkmp-admin-functions.php:218
 #: includes/admin/class-wkmp-admin-functions.php:219
-#: includes/front/class-wkmp-front-functions.php:492
+#: includes/front/class-wkmp-front-functions.php:503
 #: templates/front/class-wkmp-front-template-functions.php:222
 msgid "Products"
 msgstr ""
@@ -215,7 +215,7 @@ msgstr ""
 #: includes/admin/class-wkmp-admin-functions.php:230
 #: includes/admin/class-wkmp-admin-functions.php:231
 #: includes/class-wkmp-install.php:470
-#: includes/front/class-wkmp-front-functions.php:499
+#: includes/front/class-wkmp-front-functions.php:510
 #: templates/admin/notification/class-wkmp-notification-templates-handler.php:81
 #: templates/admin/settings/wkmp-endpoint-settings-content.php:60
 #: templates/front/class-wkmp-front-template-functions.php:276
@@ -533,7 +533,7 @@ msgid "Recent Product from Seller"
 msgstr ""
 
 #: includes/class-wkmp-install.php:469
-#: includes/front/class-wkmp-front-functions.php:494
+#: includes/front/class-wkmp-front-functions.php:505
 #: templates/admin/seller/class-wkmp-seller-templates-handler.php:97
 #: templates/admin/settings/wkmp-endpoint-settings-content.php:52
 #: templates/front/class-wkmp-front-template-functions.php:258
@@ -541,7 +541,7 @@ msgid "Transactions"
 msgstr ""
 
 #: includes/class-wkmp-install.php:471
-#: includes/front/class-wkmp-front-functions.php:500
+#: includes/front/class-wkmp-front-functions.php:511
 #: templates/admin/settings/wkmp-endpoint-settings-content.php:64
 #: templates/front/class-wkmp-front-template-functions.php:285
 msgid "Shop Followers"
@@ -556,17 +556,20 @@ msgstr ""
 msgid "Sellers Recent Product"
 msgstr ""
 
-#: includes/common/class-wkmp-common-functions.php:516
+#: includes/common/class-wkmp-common-functions.php:515
 msgid "ERROR"
 msgstr ""
 
-#: includes/common/class-wkmp-common-functions.php:516
+#: includes/common/class-wkmp-common-functions.php:515
 msgid "The shop URL already EXISTS please try different shop url"
 msgstr ""
 
-#: includes/common/class-wkmp-common-functions.php:592
-#: includes/common/class-wkmp-common-functions.php:594
-msgid "Frontend Seller Dashboard"
+#: includes/common/class-wkmp-common-functions.php:591
+msgid "Frontend Dashboard"
+msgstr ""
+
+#: includes/common/class-wkmp-common-functions.php:593
+msgid "Switch to your frontend dashboard"
 msgstr ""
 
 #: includes/common/class-wkmp-common-functions.php:654
@@ -1596,38 +1599,38 @@ msgstr ""
 msgid "Please enter valid phone number."
 msgstr ""
 
-#: includes/front/class-wkmp-front-functions.php:440
+#: includes/front/class-wkmp-front-functions.php:451
 msgid "Registration complete check your mail for password!"
 msgstr ""
 
-#: includes/front/class-wkmp-front-functions.php:493
+#: includes/front/class-wkmp-front-functions.php:504
 #: templates/front/class-wkmp-front-template-functions.php:249
 msgid "Order History"
 msgstr ""
 
-#: includes/front/class-wkmp-front-functions.php:498
+#: includes/front/class-wkmp-front-functions.php:509
 #: templates/admin/settings/wkmp-endpoint-settings-content.php:56
 #: templates/front/class-wkmp-front-template-functions.php:267
 msgid "My Profile"
 msgstr ""
 
-#: includes/front/class-wkmp-front-functions.php:503
+#: includes/front/class-wkmp-front-functions.php:514
 #: templates/front/class-wkmp-front-template-functions.php:294
 msgid "Ask Admin"
 msgstr ""
 
-#: includes/front/class-wkmp-front-functions.php:982
+#: includes/front/class-wkmp-front-functions.php:993
 #: templates/front/seller/profile/class-wkmp-profile-info.php:77
 msgid "Your seller account is under review and will be approved by the admin."
 msgstr ""
 
 #. translators: %1$s: Shop name, %2$s: Minimum amount, %3$s: Current total.
-#: includes/front/class-wkmp-front-functions.php:1182
+#: includes/front/class-wkmp-front-functions.php:1193
 msgid "Minimum products total for %1$s Shop product(s) should be %2$s. Current total (inclusive tax) is: %3$s."
 msgstr ""
 
 #. translators: %1$s: Shop name, %2$s: Minimum amount.
-#: includes/front/class-wkmp-front-functions.php:1200
+#: includes/front/class-wkmp-front-functions.php:1211
 msgid "Sorry, but you can only add maximum %1$s quantity of %2$s in this cart."
 msgstr ""
 
@@ -2535,7 +2538,7 @@ msgstr ""
 
 #: templates/admin/settings/wkmp-assets-settings-content.php:32
 #: templates/front/seller/profile/class-wkmp-seller-profile-form.php:166
-#: templates/front/wkmp-registration-fields.php:74
+#: templates/front/wkmp-registration-fields.php:88
 msgid "Phone Number"
 msgstr ""
 
@@ -2841,7 +2844,7 @@ msgstr ""
 
 #: templates/admin/user/wkmp-user-profile.php:49
 #: templates/front/seller/profile/class-wkmp-seller-profile-form.php:161
-#: templates/front/wkmp-registration-fields.php:62
+#: templates/front/wkmp-registration-fields.php:69
 msgid "Shop URL"
 msgstr ""
 
@@ -4144,7 +4147,7 @@ msgid "Last Name"
 msgstr ""
 
 #: templates/front/seller/profile/class-wkmp-seller-profile-form.php:167
-#: templates/front/wkmp-registration-fields.php:75
+#: templates/front/wkmp-registration-fields.php:89
 msgid "Enter a valid phone number from 4 to 15 characters."
 msgstr ""
 
@@ -4387,11 +4390,19 @@ msgstr ""
 msgid "Method :"
 msgstr ""
 
-#: templates/front/wkmp-registration-fields.php:88
+#: templates/front/wkmp-registration-fields.php:54
+msgid "If empty, First and Last name will be the Shop Name."
+msgstr ""
+
+#: templates/front/wkmp-registration-fields.php:72
+msgid "If empty, your username will be the Shop URL."
+msgstr ""
+
+#: templates/front/wkmp-registration-fields.php:102
 msgid "I am a Customer"
 msgstr ""
 
-#: templates/front/wkmp-registration-fields.php:92
+#: templates/front/wkmp-registration-fields.php:106
 msgid "I am a Seller"
 msgstr ""
 
