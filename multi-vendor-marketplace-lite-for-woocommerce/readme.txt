@@ -3,7 +3,7 @@ Contributors: webkul
 Tags: b2c marketplace, marketplace, marketplace for WooCommerce, marketplace plugin, multi-vendor marketplace, seller, sellers, vendor, vendors, WooCommerce marketplace
 Requires at least: 5.0
 Tested up to: 6.4
-Stable tag: 1.0.0
+Stable tag: 0.9.3
 Requires PHP: 7.4
 Tested up to PHP: 8.3
 WC requires at least: 5.0
@@ -240,18 +240,45 @@ For any Query please generate a ticket at https://webkul.com/ticket/
 
 == Changelog ==
 
-= 1.0.0 - 2024-01-20 =
-Initial Public release.
-
 == 0.9.3 - 2024-01-05 ==
-Added: Back button on seller listing page in admin.
-Updated: Chart UI on seller dashboard with latest updates.
-Fixed: Issue in commission calculations.
+
 Fixed: Nonce verification and security issues across the plugin.
-Fixed: Issue with variation product not creating properly on seller end.
-Fixed: Regular price was not accepting decimal values.
-Fixed: Refund quantity and refunded amount not showing on seller end.
-Fixed: Shipping tab was not hiding for virtual product on seller end.
+
+Seller Frontend Dashboard.
+	Added: Links on email and phone number in invoices.
+	Added: Validation on phone number fields.
+	Fixed: Product listing page layout to minimize scrolling to perform actions.
+	Fixed: Issue with variation product not creating properly.
+	Fixed: Regular price was not accepting decimal values.
+	Fixed: Refund quantity and refunded amount not showing.
+	Fixed: Shipping tab was not hiding for virtual product.
+	Fixed: Cross-sells were not updating on product update.
+	Fixed: Order search by order id was not working.
+	Fixed: Group and External/Affiliate product were not creating properly.
+	Fixed: Pagination count was showing wrong on Ask to Admin page.
+	Fixed: Only one attribute is creating for variable product.
+	Fixed: Product thumbnail is not removing from product Add/Update form.
+	Fixed: UI in downloadable product section.
+	Fixed: Product type is not showing under product edit page.
+	Fixed: Seller registration page shop name and shop url optional is not working.
+
+Admin Dashboard:
+	Added: Tooltip on allowed categories and allowed product types settings.
+	Added: Links on emails on seller info page.
+	Added: Back button on seller listing page in admin.
+	Fixed: Seller order count is not showing correct values.
+	Fixed: Change product seller is not working.
+	Fixed: Rating values are not showing in correct format.
+	Fixed: Alert message text on pay to seller button.
+	Fixed: Notifications content to be translatable.
+	Fixed: Issue in commission calculations.
+	Fixed: Break lines were removing from email content on reply seller queries.
+	Fixed: Seller products are not showing in WooCommerce products listing page.
+
+Customer End:
+	Fixed: Product catalog pagination was not working on seller profile page.
+	Fixed: Review to seller form submission multiple times by customer.
+	Fixed: Rating stars are not showing correct on seller profile page.
 
 = 0.9.1 - 2023-12-06 =
 Fixed: Pro notice sending in admin emails without checking pro plugin.
