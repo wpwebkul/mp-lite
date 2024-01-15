@@ -16,7 +16,6 @@ if ( ! class_exists( 'WKMP_Product_Queries' ) ) {
 	 * General queries class
 	 */
 	class WKMP_Product_Queries {
-
 		/**
 		 * DB Variable
 		 *

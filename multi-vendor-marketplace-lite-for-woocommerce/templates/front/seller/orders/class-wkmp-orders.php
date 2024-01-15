@@ -56,13 +56,11 @@ if ( ! class_exists( 'WKMP_Orders' ) ) {
 		 *
 		 * WKMP_Orders constructor.
 		 *
-		 * @param int     $seller_id Seller id.
-		 * @param boolean $invoice Invoice.
-		 * @param int     $order_id Order id.
+		 * @param int $seller_id Seller id.
 		 *
 		 * @throws \Exception Throwing Exception.
 		 */
-		public function __construct( $seller_id = 0, $invoice = false, $order_id = 0 ) {
+		public function __construct( $seller_id = 0 ) {
 			global $wpdb;
 
 			$this->wpdb         = $wpdb;

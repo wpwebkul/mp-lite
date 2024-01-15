@@ -7,10 +7,11 @@
  * @version 5.2.0
  */
 defined( 'ABSPATH' ) || exit; // Exit if access directly.
-
+$placehoder = esc_attr__( 'Use “|” to separate different options. Enter options for customers to choose from, f.e. “Blue” or “Large”.', 'wk-marketplace' );
 ?>
 <div class="wkmp_container" id="attributestabwk">
 	<div class="input_fields_toolbar">
+		<p class="wkmp-attribute-placeholder"><?php echo esc_html( $placehoder ); ?></p>
 		<button class="btn btn-success add-variant-attribute"><?php esc_html_e( 'Add an attribute', 'wk-marketplace' ); ?></button>
 	</div>
 	<div class="wk_marketplace_attributes">
@@ -25,7 +26,7 @@ defined( 'ABSPATH' ) || exit; // Exit if access directly.
 				<div class="wkmp_attributes">
 					<div class="box-header attribute-remove">
 						<input type="text" class="mp-attributes-name wkmp_product_input" placeholder="Attribute name" name="pro_att[<?php echo esc_attr( $i ); ?>][name]" value="<?php echo esc_attr( str_replace( '-', ' ', esc_attr( $proatt['name'] ) ) ); ?>"/>
-						<input type="text" class="option wkmp_product_input" title="<?php esc_attr_e( 'Attribute value by separating comma eg. a|b|c', 'wk-marketplace' ); ?>" placeholder=" <?php esc_html_e( 'Value eg. a|b|c', 'wk-marketplace' ); ?>" name="pro_att[<?php echo esc_attr( $i ); ?>][value]" value="<?php echo esc_attr( $proatt['value'] ); ?> "/>
+						<input type="text" class="option wkmp_product_input" title="<?php echo esc_attr( $placehoder ); ?>" placeholder=" <?php echo esc_attr( $placehoder ); ?>" name="pro_att[<?php echo esc_attr( $i ); ?>][value]" value="<?php echo esc_attr( $proatt['value'] ); ?> "/>
 						<input type="hidden" name="pro_att[<?php echo esc_attr( $i ); ?>][position]" class="attribute_position" value="<?php echo esc_attr( $proatt['position'] ); ?>"/>
 						<span class="mp_actions">
 					<button class="mp_attribute_remove btn btn-danger"><?php esc_html_e( 'Remove', 'wk-marketplace' ); ?></button>

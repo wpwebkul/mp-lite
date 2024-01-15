@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<ruleset name="WordPress WooCommerce Coding Standards" lwdt="202401151035">
+<ruleset name="WordPress WooCommerce Coding Standards" lwdt="202401101200">
 	<description>PHP_CodeSniffer version 3.8.0 (stable) by Squiz and PHPCSStandards</description>
 
 	<!-- Exclude paths -->
@@ -18,7 +18,6 @@
 	<rule ref="WordPress.WP.I18n">
 		<properties>
 			<property name="text_domain" type="array">
-				<element value="wk-marketplace"/>
 				<element value="wk_caching"/>
 			</property>
 		</properties>
@@ -41,8 +40,6 @@
 		<!-- While conditions with assignments are a typical way to walk the token stream. -->
 		<exclude name="Generic.CodeAnalysis.AssignmentInCondition.FoundInWhileCondition"/>
 	</rule>
-	<rule ref="WordPress.DB.PreparedSQL"/>
-	<rule ref="WordPress.DB.PreparedSQLPlaceholders"/>
 
 	<!--
 	#############################################################################

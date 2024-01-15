@@ -173,7 +173,7 @@ if ( ! class_exists( 'WKMP_Seller_Store_Info' ) ) {
 							$posted_data['status']    = apply_filters( 'wkmp_default_seller_review_status', 0, $posted_data );
 
 							$obj = Common\WKMP_Seller_Feedback::get_instance();
-							$obj->wkmp_insert_seller_feedback( $posted_data, $this->seller_id );
+							$obj->wkmp_insert_seller_feedback( $posted_data );
 
 							do_action( 'wkmp_save_seller_feedback', $posted_data, $this->seller_id );
 
@@ -401,11 +401,11 @@ if ( ! class_exists( 'WKMP_Seller_Store_Info' ) ) {
 		/**
 		 * Display seller profile details section.
 		 *
-		 * @param string $end_point Endpoint.
+		 * @param string $endpoint Endpoint.
 		 *
 		 * @return void
 		 */
-		public function wkmp_seller_profile_details_section( $end_point = '' ) {
+		public function wkmp_seller_profile_details_section( $endpoint = '' ) {
 			$seller_info = $this->marketplace->wkmp_get_seller_info( $this->seller_id );
 			$shop_logo   = WKMP_LITE_PLUGIN_URL . 'assets/images/shop-logo.png';
 
@@ -483,6 +483,8 @@ if ( ! class_exists( 'WKMP_Seller_Store_Info' ) ) {
 				$value_stars   /= $total_feedback;
 				$quality_stars /= $total_feedback;
 			}
+
+			$end_point = $endpoint;
 
 			require_once __DIR__ . '/wkmp-seller-store-details-section.php';
 		}

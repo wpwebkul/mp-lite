@@ -7,13 +7,8 @@
 
 defined( 'ABSPATH' ) || exit(); // Exit if access directly.
 
-$show_fields = false;
-$user_id     = 0;
-$wkmp_role   = \WK_Caching::wk_get_request_data( 'role', array( 'method' => 'post' ) );
-
-if ( ! $user instanceof \WP_User && 'add-new-user' === $user ) {
-	$show_fields = true;
-}
+$user_id   = 0;
+$wkmp_role = \WK_Caching::wk_get_request_data( 'role', array( 'method' => 'post' ) );
 
 if ( ! $show_fields && $user instanceof \WP_User ) {
 	if ( in_array( 'wk_marketplace_seller', $user->roles, true ) || ( count( array_intersect( array( 'customer', 'subscriber' ), $user->roles ) ) > 0 ) ) {

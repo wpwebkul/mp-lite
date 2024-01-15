@@ -14,7 +14,6 @@ if ( empty( $invoice_nonce ) || ( ! empty( $invoice_nonce ) && ! wp_verify_nonce
 	wp_die( '<h1>' . esc_html__( 'Cheating’ uh?', 'wk-marketplace' ) . '</h1><p>' . esc_html__( 'Sorry, you are not allowed to access invoice.', 'wk-marketplace' ) . '</p>' );
 }
 
-$admin_order              = wc_get_order( $order_id );
 $order_detail_by_order_id = array();
 $get_item                 = $admin_order->get_items();
 $cur_symbol               = get_woocommerce_currency_symbol( $admin_order->get_currency() );

@@ -99,12 +99,9 @@ if ( ! class_exists( 'WKMP_Seller_Data' ) ) {
 		 */
 		public function wkmp_get_sellers( $data = array() ) {
 			$wpdb_obj = $this->wpdb;
+			$fields   = empty( $data['fields'] ) ? '* ' : $data['fields'];
 
-			$sql = 'SELECT ';
-
-			$sql .= empty( $data['fields'] ) ? ' * ' : $data['fields'];
-
-			$sql .= " FROM {$wpdb_obj->prefix}mpsellerinfo mp LEFT JOIN {$wpdb_obj->base_prefix}users u ON (mp.user_id = u.ID) WHERE 1=1";
+			$sql = $wpdb_obj->prepare( "SELECT %1s FROM {$wpdb_obj->prefix}mpsellerinfo mp LEFT JOIN {$wpdb_obj->base_prefix}users u ON (mp.user_id = u.ID) WHERE 1=1", esc_sql( $fields ) );
 
 			if ( ! empty( $data['role'] ) ) {
 				$sql .= $wpdb_obj->prepare( ' AND mp.seller_value = %s', esc_sql( $data['role'] ) );
@@ -121,12 +118,10 @@ if ( ! class_exists( 'WKMP_Seller_Data' ) ) {
 			}
 
 			if ( empty( $data['single_col'] ) ) {
-
 				$orderby = empty( $data['orderby'] ) ? 'user_nicename' : $data['orderby']; // If no sort, default to date.
 				$order   = empty( $data['order'] ) ? 'desc' : $data['order']; // If no order, default to asc.
 
-				$orderby_sql = sanitize_sql_orderby( "{$orderby} {$order}" );
-				$sql        .= " ORDER BY u.{$orderby_sql}";
+				$sql .= $wpdb_obj->prepare( ' ORDER BY %1s %2s', esc_sql( $orderby ), esc_sql( $order ) );
 			}
 
 			if ( ! empty( $data['limit'] ) ) {

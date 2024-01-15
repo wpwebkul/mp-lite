@@ -3,7 +3,7 @@ Contributors: webkul
 Tags: b2c marketplace, marketplace, marketplace for WooCommerce, marketplace plugin, multi-vendor marketplace, seller, sellers, vendor, vendors, WooCommerce marketplace
 Requires at least: 5.0
 Tested up to: 6.4
-Stable tag: 0.9.3
+Stable tag: 1.0.0
 Requires PHP: 7.4
 Tested up to PHP: 8.3
 WC requires at least: 5.0
@@ -42,6 +42,12 @@ To show top billing countries and charts on the seller's Dashboard this plugin u
 For showing extensions and the support and services menu we are using our Webkul Services. So, confirming the privacy policies is recommended.
 
 * Extensions ([Webkul Policy(https://webkul.com/privacy-policy/)]
+
+ = Developer Resources =
+
+Multi-Vendor Marketplace Lite for WooCommerce is a open source software and made to be extended. To reduce zip size and optimize the code, we have added minified css and js assets but developers can find non-minified (un-compressed) source at our public ([github repository(https://github.com/wpwebkul/multi-vendor-marketplace-lite-for-woocommerce/)] here.
+
+For showing Google Maps on Seller Dashboard we have used ([Google Map Loader JS (https://developers.google.com/chart/interactive/docs/basic_load_libs)]
 
 Let's checkout all features of Multi-Vendor Marketplace Lite for WooCommerce.
 
@@ -168,6 +174,7 @@ Customers receive email notifications when a favorite seller sends out a notific
 - **Assign Seller** - Admin can assign or change a product to an available seller.
 
 - **Filter & Search Seller** - Admin can search and filter from the seller's list.
+
 - **Disable Auto Approve** - Admin can disable seller auto approve on registration and review the profile.
 
 - **Seller Backend Dashboard** - Admin can allow sellers to have a separate admin-like backend dashboard.
@@ -240,7 +247,10 @@ For any Query please generate a ticket at https://webkul.com/ticket/
 
 == Changelog ==
 
-== 0.9.3 - 2024-01-05 ==
+= 1.0.0 - 2024-01-20 =
+Initial Public release.
+
+== 0.9.3 - 2024-01-15 ==
 
 Fixed: Nonce verification and security issues across the plugin.
 

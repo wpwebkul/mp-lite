@@ -241,10 +241,18 @@ if ( ! class_exists( 'WKMP_Front_Ajax_Functions' ) ) {
 		/**
 		 * Attribute variation data.
 		 *
-		 * @param int $var_id Variable id.
+		 * @param int $variation_id Variation id.
 		 * @param int $wk_pro_id Product id.
 		 */
-		public function wkmp_attribute_variation_data( $var_id, $wk_pro_id ) {
+		public function wkmp_attribute_variation_data( $variation_id, $wk_pro_id ) {
+			$thumb_id            = get_post_meta( $variation_id, '_thumbnail_id', true );
+			$product_ping_status = array(
+				'ID'          => $wk_pro_id,
+				'ping_status' => 'closed',
+			);
+
+			wp_update_post( $product_ping_status );
+
 			require_once WKMP_LITE_PLUGIN_FILE . 'templates/front/seller/product/wkmp-variations.php';
 		}
 

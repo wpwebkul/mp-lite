@@ -88,8 +88,7 @@ if ( ! class_exists( 'WKMP_Seller_Ask_Queries' ) ) {
 		 * @return array $queries seller queries.
 		 */
 		public function wkmp_get_all_seller_queries( $data = array() ) {
-			$wpdb_obj = $this->wpdb;
-
+			$wpdb_obj  = $this->wpdb;
 			$sql_query = "SELECT * FROM {$wpdb_obj->prefix}mpseller_asktoadmin WHERE id >= 1";
 
 			if ( ! empty( $data['search'] ) ) {
@@ -102,11 +101,9 @@ if ( ! class_exists( 'WKMP_Seller_Ask_Queries' ) ) {
 
 			$orderby = empty( $data['orderby'] ) ? 'subject' : $data['orderby']; // If no sort, default to date.
 			$order   = empty( $data['order'] ) ? 'desc' : $data['order']; // If no order, default to asc.
-
 			$orderby = ( 'subject' === $orderby ) ? $orderby : 'create_date';
 
-			$orderby_sql = sanitize_sql_orderby( "{$orderby} {$order}" );
-			$sql_query  .= " ORDER BY {$orderby_sql}";
+			$sql_query .= $wpdb_obj->prepare( ' ORDER BY %1s %2s', esc_sql( $orderby ), esc_sql( $order ) );
 
 			if ( ! empty( $data['limit'] ) ) {
 				$offset     = empty( $data['offset'] ) ? 0 : intval( $data['offset'] );

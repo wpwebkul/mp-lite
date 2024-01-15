@@ -113,8 +113,7 @@ if ( ! class_exists( 'WKMP_Transaction' ) ) {
 
 			$orderby = ( 'subject' === $orderby ) ? $orderby : 'transaction_date';
 
-			$orderby_sql = sanitize_sql_orderby( "{$orderby} {$order}" );
-			$sql        .= " ORDER BY {$orderby_sql}";
+			$sql .= $wpdb_obj->prepare( ' ORDER BY %1s %2s', esc_sql( $orderby ), esc_sql( $order ) );
 
 			if ( ! empty( $data['limit'] ) ) {
 				$offset = empty( $data['offset'] ) ? 0 : intval( $data['offset'] );

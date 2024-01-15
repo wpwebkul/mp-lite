@@ -373,13 +373,11 @@ if ( ! class_exists( 'WKMP_Common_Functions' ) ) {
 		/**
 		 * Save meta info.
 		 *
-		 * @param int         $post_id Post id.
-		 * @param \WC_Product $post Product post obj.
-		 * @param boolean     $update Update.
+		 * @param int $post_id Post id.
 		 *
 		 * @hooked 'save_post' Action hook.
 		 */
-		public function wkmp_save_product_seller_and_qty( $post_id, $post, $update ) {
+		public function wkmp_save_product_seller_and_qty( $post_id ) {
 			$nonce = \WK_Caching::wk_get_request_data( 'wkmp_seller_meta_box_nonce', array( 'method' => 'post' ) );
 
 			if ( ! empty( $nonce ) && wp_verify_nonce( $nonce, 'wkmp_save_meta_box_seller' ) ) {
@@ -872,11 +870,10 @@ if ( ! class_exists( 'WKMP_Common_Functions' ) ) {
 		 *
 		 * @param string $value Meta value.
 		 * @param object $meta Meta.
-		 * @param array  $item Order item.
 		 *
 		 * @return string
 		 */
-		public function wkmp_validate_sold_by_order_item_meta( $value, $meta, $item = array() ) {
+		public function wkmp_validate_sold_by_order_item_meta( $value, $meta ) {
 			global $wkmarketplace;
 
 			$sold_by = $this->wkmp_check_if_sold_by_item_meta( $value, $meta, $wkmarketplace );

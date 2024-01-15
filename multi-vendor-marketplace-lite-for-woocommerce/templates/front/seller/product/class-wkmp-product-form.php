@@ -129,7 +129,7 @@ if ( ! class_exists( 'WKMP_Product_Form' ) ) {
 			);
 
 			?>
-			<div class="form wkmp_container add-product-form">
+			<div class="form wkmp_container wkmp-add-product-form">
 				<?php
 				$nonce_first = \WK_Caching::wk_get_request_data( 'wkmp_select_type_cat_nonce_name', array( 'method' => 'post' ) );
 
@@ -870,30 +870,6 @@ if ( ! class_exists( 'WKMP_Product_Form' ) ) {
 		}
 
 		/**
-		 * Marketplace media fix.
-		 *
-		 * @param string $post_id Post Id.
-		 */
-		public function wkmp_marketplace_media_fix( $post_id = '' ) {
-			global $frontier_post_id;
-			$frontier_post_id = $post_id;
-			add_filter( 'media_view_settings', array( $this, 'wkmp_marketplace_media_fix_filter' ), 10, 2 );
-		}
-
-		/**
-		 * Fix insert media editor button filter.
-		 *
-		 * @param array $settings setting array.
-		 * @param int   $post post.
-		 */
-		public function wkmp_marketplace_media_fix_filter( $settings, $post ) {
-			global $frontier_post_id;
-			$settings['post']['id'] = $frontier_post_id;
-
-			return $settings;
-		}
-
-		/**
 		 * Display attribute variations
 		 *
 		 * @param int $var_id variable id.
@@ -922,12 +898,19 @@ if ( ! class_exists( 'WKMP_Product_Form' ) ) {
 		/**
 		 * Include variations HTML
 		 *
-		 * @param int $var_id variable id.
+		 * @param int $variation_id Variable id.
 		 * @param int $wk_pro_id variable id.
 		 *
 		 * @return void
 		 */
-		public function wkmp_attribute_variation_data( $var_id, $wk_pro_id ) {
+		public function wkmp_attribute_variation_data( $variation_id, $wk_pro_id ) {
+			$thumb_id            = get_post_meta( $variation_id, '_thumbnail_id', true );
+			$product_ping_status = array(
+				'ID'          => $wk_pro_id,
+				'ping_status' => 'closed',
+			);
+
+			wp_update_post( $product_ping_status );
 			require __DIR__ . '/wkmp-variations.php';
 		}
 

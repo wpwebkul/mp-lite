@@ -44,6 +44,7 @@ if ( ! empty( $order_data ) ) {
 			<h3><?php echo wp_sprintf( /* translators: %s: Order id. */ esc_html__( 'Order #%s', 'wk-marketplace' ), esc_html( $order_id ) ); ?></h3>
 
 			<div class="wkmp_order_data_detail"> <!-- Class: wkmp_order_data_detail starts here.  -->
+				<?php do_action( 'wkmp_order_details_before_order_table', $seller_order ); ?>
 				<form method="post" id="wkmp-order-view-form">
 					<table class="widefat">
 						<thead>

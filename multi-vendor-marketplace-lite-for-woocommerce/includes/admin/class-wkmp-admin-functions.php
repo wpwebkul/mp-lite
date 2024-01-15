@@ -504,6 +504,7 @@ if ( ! class_exists( 'WKMP_Admin_Functions' ) ) {
 		 * @param int $order_id order id.
 		 */
 		public function wkmp_admin_end_invoice( $order_id ) {
+			$admin_order = wc_get_order( $order_id );
 			require_once WKMP_LITE_PLUGIN_FILE . 'templates/admin/wkmp-admin-order-invoice.php';
 		}
 
@@ -537,9 +538,15 @@ if ( ! class_exists( 'WKMP_Admin_Functions' ) ) {
 		/**
 		 * Extra user profile.
 		 *
-		 * @param object $user user.
+		 * @param object $user User object.
 		 */
 		public function wkmp_extra_user_profile_fields( $user ) {
+			$show_fields = false;
+
+			if ( ! $user instanceof \WP_User && 'add-new-user' === $user ) {
+				$show_fields = true;
+			}
+
 			require_once WKMP_LITE_PLUGIN_FILE . 'templates/admin/user/wkmp-user-profile.php';
 		}
 
@@ -570,6 +577,8 @@ if ( ! class_exists( 'WKMP_Admin_Functions' ) ) {
 					'single_col' => true,
 				)
 			);
+
+			$seller_ids = array_map( 'intval', $seller_ids );
 
 			wp_nonce_field( 'wkmp_save_meta_box_seller', 'wkmp_seller_meta_box_nonce' );
 			?>

@@ -39,17 +39,15 @@ if ( ! class_exists( 'WKMP_Dashboard_Summary' ) ) {
 		public function __construct( $db_obj, $marketplace, $seller_orders, $seller_id ) {
 			$this->seller_orders = $seller_orders;
 
-			$this->wkmp_seller_dashboard_summary( $seller_id );
+			$this->wkmp_seller_dashboard_summary();
 		}
 
 		/**
 		 * Show seller dashboard summary.
 		 *
-		 * @param int $seller_id Seller id.
-		 *
 		 * @return void
 		 */
-		public function wkmp_seller_dashboard_summary( $seller_id ) {
+		public function wkmp_seller_dashboard_summary() {
 			$data          = $this->seller_orders;
 			$total_payout  = isset( $data->paid_amount ) ? $data->paid_amount : 0;
 			$total_sales   = isset( $data->seller_total_ammount ) ? $data->seller_total_ammount : 0;

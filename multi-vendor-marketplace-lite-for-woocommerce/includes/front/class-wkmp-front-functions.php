@@ -118,7 +118,7 @@ if ( ! class_exists( 'WKMP_Front_Functions' ) ) {
 				'mkt27'              => esc_html__( 'Ask Your Question (Message length should be less than 500).', 'wk-marketplace' ),
 				'mkt28'              => esc_html__( 'Online', 'wk-marketplace' ),
 				'mkt29'              => esc_html__( 'Attribute name', 'wk-marketplace' ),
-				'mkt30'              => esc_html__( 'Attribute value by separating comma eg. a|b|c', 'wk-marketplace' ),
+				'mkt30'              => esc_html__( 'Use “|” to separate different options. Enter options for customers to choose from, f.e. “Blue” or “Large”.', 'wk-marketplace' ),
 				'mkt31'              => esc_html__( 'Attribute Value eg. a|b|c', 'wk-marketplace' ),
 				'mkt32'              => esc_html__( 'Remove', 'wk-marketplace' ),
 				'mkt33'              => esc_html__( 'Visible on the product page', 'wk-marketplace' ),
@@ -862,20 +862,20 @@ if ( ! class_exists( 'WKMP_Front_Functions' ) ) {
 
 				$coupon_detail = empty( WC()->cart ) ? array() : WC()->cart->get_coupons();
 
-				if ( empty( $coupon_detail ) ) {
-					foreach ( $coupon_detail as $key => $value ) {
-						$coupon_code     = $key;
-						$coupon_post_obj = get_page_by_title( $coupon_code, OBJECT, 'shop_coupon' );
-						$coupon_create   = $coupon_post_obj->post_author;
+				if ( ! empty( $coupon_detail ) ) {
+					foreach ( $coupon_detail as $coupon_code => $coupon_data ) {
+						if ( $coupon_data instanceof \WC_Coupon ) {
+							$coupon_author = get_post_field( 'post_author', $coupon_data->id );
 
-						$insert = array(
-							'seller_id'  => $coupon_create,
-							'order_id'   => $order_id,
-							'meta_key'   => 'discount_code',
-							'meta_value' => $coupon_code,
-						);
+							$insert = array(
+								'seller_id'  => $coupon_author,
+								'order_id'   => $order_id,
+								'meta_key'   => 'discount_code',
+								'meta_value' => $coupon_code,
+							);
 
-						$this->db_obj_order->wkmp_insert_mporders_meta_data( $insert );
+							$this->db_obj_order->wkmp_insert_mporders_meta_data( $insert );
+						}
 					}
 				}
 
@@ -902,29 +902,29 @@ if ( ! class_exists( 'WKMP_Front_Functions' ) ) {
 				}
 				?>
 				<nav class="woocommerce-pagination">
-					<?php
-					echo wp_kses_post(
-						paginate_links(
-							apply_filters(
-								'woocommerce_pagination_args',
-								array(
-									'base'      => esc_url_raw( str_replace( 999999999, '%#%', remove_query_arg( 'add-to-cart', get_pagenum_link( 999999999, false ) ) ) ),
-									'format'    => '',
-									'add_args'  => false,
-									'current'   => max( 1, $store_paged ),
-									'total'     => $max_num_pages,
-									'prev_text' => '&larr;',
-									'next_text' => '&rarr;',
-									'type'      => 'list',
-									'end_size'  => 3,
-									'mid_size'  => 3,
-								)
+				<?php
+				echo wp_kses_post(
+					paginate_links(
+						apply_filters(
+							'woocommerce_pagination_args',
+							array(
+								'base'      => esc_url_raw( str_replace( 999999999, '%#%', remove_query_arg( 'add-to-cart', get_pagenum_link( 999999999, false ) ) ) ),
+								'format'    => '',
+								'add_args'  => false,
+								'current'   => max( 1, $store_paged ),
+								'total'     => $max_num_pages,
+								'prev_text' => '&larr;',
+								'next_text' => '&rarr;',
+								'type'      => 'list',
+								'end_size'  => 3,
+								'mid_size'  => 3,
 							)
 						)
-					);
-					?>
+					)
+				);
+				?>
 				</nav>
-				<?php
+					<?php
 			}
 		}
 
@@ -1038,10 +1038,8 @@ if ( ! class_exists( 'WKMP_Front_Functions' ) ) {
 		 * Validating order total on checkout.
 		 *
 		 * @hooked woocommerce_checkout_update_order_review
-		 *
-		 * @param array $posted_data Posted data.
 		 */
-		public function wkmp_validate_minimum_order_amount_checkout( $posted_data ) {
+		public function wkmp_validate_minimum_order_amount_checkout() {
 			$threshold_notes = $this->is_threshold_reached();
 			$qty_notes       = $this->is_qty_allowed();
 

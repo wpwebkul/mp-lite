@@ -49,7 +49,7 @@ if ( $post_row_data && intval( $product_auth ) === get_current_user_id() ) {
 	$thumbnail_image = ( is_array( $thumbnail_img ) && count( $thumbnail_img ) > 0 ) ? $thumbnail_img[0] : '';
 	?>
 
-	<div class="add-product-form">
+	<div class="wkmp-add-product-form">
 		<input type="hidden" name="var_variation_display" id="var_variation_display" value="<?php echo esc_attr( $display_variation ); ?>"/>
 
 		<ul id='edit_product_tab'>
@@ -136,7 +136,7 @@ if ( $post_row_data && intval( $product_auth ) === get_current_user_id() ) {
 			<br>
 			<input type="submit" name="add_product_sub" id="add_product_sub" value="<?php esc_attr_e( 'Update', 'wk-marketplace' ); ?>" class="button"/></td>
 		</form>
-	</div><!-- add-product-form end here -->
+	</div><!-- wkmp-add-product-form end here -->
 <?php } elseif ( empty( $product_auth ) ) { ?>
 	<h2> <?php esc_html_e( 'This product is no longer exist.', 'wk-marketplace' ); ?> </h2>
 	<a href="<?php echo esc_url( get_permalink( get_option( 'woocommerce_myaccount_page_id' ) ) . get_option( '_wkmp_product_list_endpoint', 'seller-products' ) ); ?>"><?php esc_html_e( 'Go to product list.', 'wk-marketplace' ); ?></a>

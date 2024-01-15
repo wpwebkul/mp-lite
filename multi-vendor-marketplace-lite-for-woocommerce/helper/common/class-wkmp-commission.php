@@ -89,7 +89,7 @@ if ( ! class_exists( 'WKMP_Commission' ) ) {
 		}
 
 		/**
-		 * Get seller commission info by seller id
+		 * Get seller commission info by seller id.
 		 *
 		 * @param int    $seller_id Seller ID.
 		 * @param string $fields Fields.
@@ -102,13 +102,12 @@ if ( ! class_exists( 'WKMP_Commission' ) ) {
 			$wpdb_obj        = $this->wpdb;
 			$commission_info = '';
 
-			$sql = 'SELECT ';
+			$fields = empty( $fields ) ? '* ' : $fields;
 
-			$sql .= empty( $fields ) ? '* ' : $fields;
-			$sql .= " FROM {$wpdb_obj->prefix}mpcommision WHERE 1=1";
+			$sql = $wpdb_obj->prepare( "SELECT %1s FROM {$wpdb_obj->prefix}mpcommision WHERE 1=1", esc_sql( $fields ) );
 
 			if ( $seller_id > 0 ) {
-				$sql .= $wpdb_obj->prepare( ' AND seller_id=%d', esc_attr( $seller_id ) );
+				$sql .= $wpdb_obj->prepare( ' AND seller_id=%d', esc_sql( $seller_id ) );
 
 				if ( $single ) {
 					$commission_info = $wpdb_obj->get_var( $sql );

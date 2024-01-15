@@ -54,11 +54,10 @@ if ( ! class_exists( 'WKMP_Seller_Feedback' ) ) {
 		 * Save Seller feedback
 		 *
 		 * @param array $data Data.
-		 * @param int   $seller_id Seller id.
 		 *
 		 * @return void
 		 */
-		public function wkmp_insert_seller_feedback( $data, $seller_id ) {
+		public function wkmp_insert_seller_feedback( $data ) {
 			$wpdb_obj            = $this->wpdb;
 			$data['review_time'] = gmdate( 'Y-m-d H:i:s' );
 
@@ -97,8 +96,7 @@ if ( ! class_exists( 'WKMP_Seller_Feedback' ) ) {
 			$orderby = empty( $filter_data['orderby'] ) ? 'review_time' : $filter_data['orderby']; // If no sort, default to date.
 			$order   = empty( $filter_data['order'] ) ? 'desc' : $filter_data['order']; // If no order, default to asc.
 
-			$orderby_sql = sanitize_sql_orderby( "{$orderby} {$order}" );
-			$sql        .= " ORDER BY {$orderby_sql}";
+			$sql .= $wpdb_obj->prepare( ' ORDER BY %1s %2s', esc_sql( $orderby ), esc_sql( $order ) );
 
 			if ( isset( $filter_data['start'] ) && isset( $filter_data['limit'] ) ) {
 				$sql .= $wpdb_obj->prepare( ' LIMIT %d, %d', esc_attr( $filter_data['start'] ), esc_attr( $filter_data['limit'] ) );

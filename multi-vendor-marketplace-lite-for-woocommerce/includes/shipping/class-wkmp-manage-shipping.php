@@ -49,7 +49,7 @@ if ( ! class_exists( 'WKMP_Manage_Shipping' ) ) {
 
 			if ( ! empty( self::$mp_shipping_list ) && is_array( self::$mp_shipping_list ) && ! is_admin() ) {
 				add_action( 'template_redirect', array( $this, 'reset_previous_chosen_shipping_method' ), 1 );
-				add_filter( 'woocommerce_shipping_zone_shipping_methods', array( $this, 'wkmp_restrict_shipping' ), 10, 4 );
+				add_filter( 'woocommerce_shipping_zone_shipping_methods', array( $this, 'wkmp_restrict_shipping' ) );
 				add_filter( 'wk_mp_show_seller_available_shipping', array( $this, 'wkmp_restrict_shipping_show' ), 10, 2 );
 				add_filter( 'woocommerce_shipping_packages', array( $this, 'wkmp_restrict_cart_shipping' ), 10, 1 );
 				add_filter( 'woocommerce_get_zone_criteria', array( $this, 'wkmp_get_zone_ids_for_marketplace_seller' ), 10, 3 );
@@ -248,16 +248,13 @@ if ( ! class_exists( 'WKMP_Manage_Shipping' ) ) {
 		/**
 		 * This Function restricts other shipping methods to show, displays only MP shipping method.
 		 *
-		 * @param array  $methods Shipping methods.
-		 * @param array  $raw_methods Raw methods.
-		 * @param array  $allowed_classes Allowed classes.
-		 * @param object $zone_object Zone object.
+		 * @param array $methods Shipping methods.
 		 *
 		 * @hooked 'woocommerce_shipping_zone_shipping_methods' filter hook.
 		 *
 		 * @return mixed
 		 */
-		public function wkmp_restrict_shipping( $methods, $raw_methods, $allowed_classes, $zone_object ) {
+		public function wkmp_restrict_shipping( $methods = array() ) {
 			$shipping_check = get_option( 'wkmp_shipping_option', 'woocommerce' );
 			if ( 'marketplace' === $shipping_check ) {
 				foreach ( $methods as $key => $value ) {
